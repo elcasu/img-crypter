@@ -36,7 +36,7 @@ imgCrypter.ready = function (imageData) {
 ```
 Nótese la referencia a `this`. En éste caso, ya estamos dentro del contexto de `imgCrypter`, por lo que podemos acceder a todas sus variables/funciones usando ésta referencia.
 
-Dentro de `pixelInfo` en el ejemplo, obtendremos la siguiente información del píxel solicitado:
+Dentro de `pixelInfo` en el ejemplo, obtendremos la siguiente información del píxel solicitado (en adelante definiremos un `color` de ésta forma):
 ```javascript
 {
   r: 255,
@@ -44,3 +44,23 @@ Dentro de `pixelInfo` en el ejemplo, obtendremos la siguiente información del p
   b: 58
 }
 ```
+
+### Modificar un determinado píxel
+Para modificar un píxel particular, tenemos el método `setPixel(x, y, color)` donde `color` es de la forma que mencionamos anteriormente.
+Nota: éste es un método que implica un costo grande, por lo que `setPixel()` no escribe directamente sobre la imagen, sino que hace los cambios en memoria.
+Para aplicar los cambios en la imagen, debemos llamar a `applyChanges()`
+
+#### Ejemplo
+```javascript
+imgCrypter.ready = function (imageData) {
+  for(var i = 10; i < 200; i++) {
+    for(var j = 0; j < 50; j++) {
+      this.setPixel(i, j, { r: 255, g: 0, b: 0 });
+    }
+  }
+  this.applyChanges();
+}
+```
+
+Como vemos en el ejemplo, dibujamos dentro de la imagen un rectangulo rojo que va desde (10, 0) hasta (200, 50).
+Primero escribimos el rectángulo en memoria recorriendo toda la superficie. Luego de tener los cambios listos, aplicamos los cambios a la imagen llamando a `applyChanges()`
