@@ -1,12 +1,6 @@
 var imgCrypter = (function () {
   var preview = {};
 
-  function processImage() {
-    preview.context.rect(10, 10, 100, 100);
-    preview.context.fill();
-    preview.base64Data = preview.canvas.toDataURL();
-  }
-
   function downloadBase64Image (base64Data, filename) {
     var link = document.createElement('a');
     link.setAttribute('href', base64Data);
