@@ -27,6 +27,7 @@ imgCrypter.ready = function (imageData) {
 
 ### Obtener la información de un determinado píxel
 Para ésto tenemos el método `getPixel(x, y)` que nos devuelve la información de un píxel determinado.
+
 Como vimos antes, podemos llamarlo una vez que tenemos la imagen cargada y lista para ser procesada:
 
 ```javascript
@@ -47,8 +48,10 @@ Dentro de `pixelInfo` en el ejemplo, obtendremos la siguiente información del p
 
 ### Modificar un determinado píxel
 Para modificar un píxel particular, tenemos el método `setPixel(x, y, color)` donde `color` es de la forma que mencionamos anteriormente.
-Nota: éste es un método que implica un costo grande, por lo que `setPixel()` no escribe directamente sobre la imagen, sino que hace los cambios en memoria.
-Para aplicar los cambios en la imagen, debemos llamar a `applyChanges()`
+
+Nota: para aplicar el cambio a la imagen, la librería debe realizar internamente una llamada al método nativo `CanvasRenderingContext2D.putImageData()` el cual implica un costo de procesamiento grande, por lo que `setPixel()` no escribe directamente sobre la imagen, sino que hace los cambios en memoria.
+
+Para aplicar los cambios en la imagen, debemos llamar a `applyChanges()`, el cual si llama al método antes mencionado para aplicar todos los cambios de una sola vez.
 
 #### Ejemplo
 ```javascript
