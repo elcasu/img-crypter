@@ -1,11 +1,16 @@
 var imgCrypter = (function () {
   var preview = {};
 
-  function downloadBase64Image (base64Data, filename) {
+  function downloadImage (filename) {
+    var base64Data = preview.canvas.toDataURL();
     var link = document.createElement('a');
     link.setAttribute('href', base64Data);
     link.setAttribute('download', filename);
     link.click();
+  }
+
+  function getOffset (x, y, width) {
+    return ((y * (width * 4)) + (x * 4))
   }
 
   return {
@@ -29,17 +34,24 @@ var imgCrypter = (function () {
       }.bind(this)
     },
     getPixel(x, y) {
-      var offset = ((y * (preview.imageData.width * 4)) + (x * 4));
+      var offset = getOffset(x, y, preview.imageData.width);
       return {
         r: preview.imageData.data[offset],
         g: preview.imageData.data[offset + 1],
         b: preview.imageData.data[offset + 2]
       };
     },
+    setPixel(x, y, color) {
+      var offset = getOffset(x, y, preview.imageData.width);
+      preview.imageData.data[offset] = color.r;
+      preview.imageData.data[offset + 1] = color.g;
+      preview.imageData.data[offset + 2] = color.b;
+    },
+    applyChanges: function () {
+      preview.context.putImageData(preview.imageData, 0, 0);
+    },
     download: function (filename) {
-      if (preview.base64Data) {
-        downloadBase64Image(preview.base64Data, filename)
-      }
+      downloadImage(filename)
     }
   };
 })();
