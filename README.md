@@ -67,3 +67,23 @@ imgCrypter.ready = function (imageData) {
 
 Como vemos en el ejemplo, dibujamos dentro de la imagen un rectangulo rojo que va desde (10, 0) hasta (200, 50).
 Primero escribimos el rectángulo en memoria recorriendo toda la superficie. Luego de tener los cambios listos, aplicamos los cambios a la imagen llamando a `applyChanges()`
+
+# Implementación para el ejercicio
+Dentro del archivo `custom.js`, dejamos declarada la función `insertMessageAction(message)` la cual se ejecutará al hacer click en el botón que inserta el mensaje ingresado.
+Como vemos, ésta función ya recibe como parámetro el mensaje ingresado en el textarea.
+
+Por otro lado, en éste punto ya tendremos los datos de la imagen disponible y por ende podemos acceder a los métodos de imgCrypter.
+De esta forma, podemos hacer el mismo ejemplo de antes, dentro de `insertMessageAction()`:
+
+```javascript
+function insertMessageAction(message) {
+  for(var i = 10; i <= 200; i++) {
+    for(var j = 0; j <= 50; j++) {
+      imgCrypter.setPixel(i, j, { r: 255, g: 0, b: 0 });
+    }
+  }
+  imgCrypter.applyChanges();
+}
+```
+
+Nótese que en éste caso llamamos a `imgCrypter.setPixel()` y `imgCrypter.applyChanges()`, y no hacemos uso de `this`, ya que ahora estamos fuera del contexto de imgCrypter.
