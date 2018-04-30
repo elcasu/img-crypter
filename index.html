@@ -14,14 +14,20 @@
         <label class="btn btn-upload" for="image-input">Seleccioná una imagen</label>
       </div>
       <div class="actions">
-        <a href="#" id="download-button" class="btn btn-download">Guardar cambios</a>
+        <a href="#" id="download-button" class="btn">Guardar cambios</a>
+      </div>
+    </section>
+
+    <section class="message-wrapper">
+      <textarea id="message" placeholder="Ingresá el texto a enviar"></textarea>
+      <div class="message-action">
+        <a id="insert-message" class="btn btn-inverted">Insertar mensaje en la imagen</a>
       </div>
     </section>
 
     <section class="preview-wrapper">
       <canvas id="preview-canvas"></canvas>
     </section>
-
 
     <script type="text/javascript" src="img-crypter.js"></script>
     <script type="text/javascript" src="main.js"></script>

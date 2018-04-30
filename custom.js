@@ -8,3 +8,7 @@ imgCrypter.ready = function (imageData) {
   this.applyChanges();
 }
 
+function insertMessageAction(message) {
+  // Acá va el código que toma el mensaje y lo inserta en la imagen
+  console.log('MESSAGE', message)
+}
