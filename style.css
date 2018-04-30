@@ -1,3 +1,54 @@
-.preview-wrapper img {
-  width: 500px;
+body {
+  font-family: Roboto, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.header {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.actions {
+  margin-left: 20px;
+}
+
+#image-input {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #ddd;
+  color: #fff;
+  border-radius: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn.btn-upload {
+  background-color: #090;
+}
+
+.btn.btn-download {
+  background-color: #00d;
+}
+
+#download-button {
+  /* this button will be hidden until some image is loaded */
+  display: none;
+}
+
+.preview-wrapper {
+  margin-top: 30px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
 }
