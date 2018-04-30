@@ -7,3 +7,8 @@ function insertMessageAction(message) {
   }
   imgCrypter.applyChanges();
 }
+
+function getMessageAction() {
+  // Acá va el código que lee la imagen y retorna el mensaje
+  return "Mensaje de Ejemplo";
+}

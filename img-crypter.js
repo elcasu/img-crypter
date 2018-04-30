@@ -47,6 +47,12 @@ var imgCrypter = (function () {
       preview.imageData.data[offset + 1] = color.g;
       preview.imageData.data[offset + 2] = color.b;
     },
+    getDimensions: function(){
+      return {
+        width: preview.width,
+        height: preview.height
+      }
+    },
     applyChanges: function () {
       preview.context.putImageData(preview.imageData, 0, 0);
     },
