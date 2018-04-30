@@ -4,6 +4,7 @@
   var imageInput = document.getElementById('image-input');
   var msgWrapper = document.querySelector('.message-wrapper');
   var insertMessage = document.getElementById('insert-message');
+  var getMessage = document.getElementById('get-message');
 
   imgCrypter.setCanvas(canvas);
 
@@ -27,10 +28,14 @@
     event.preventDefault();
     imgCrypter.download('result.jpg');
   });
-  
+
   insertMessage.addEventListener('click', function (event) {
     var message = msgWrapper.querySelector('textarea').value;
     insertMessageAction(message);
+  });
+
+  getMessage.addEventListener('click', function (event) {
+    msgWrapper.querySelector('textarea').value = getMessageAction();
   });
 
   return this;
