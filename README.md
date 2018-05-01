@@ -32,7 +32,7 @@ Como vimos antes, podemos llamarlo una vez que tenemos la imagen cargada y lista
 
 ```javascript
 imgCrypter.ready = function (imageData) {
-   var pixelInfo = this.imageData(100, 150);
+   var pixelInfo = this.getPixel(100, 150);
 }
 ```
 Nótese la referencia a `this`. En éste caso, ya estamos dentro del contexto de `imgCrypter`, por lo que podemos acceder a todas sus variables/funciones usando ésta referencia.
