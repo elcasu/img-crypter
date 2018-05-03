@@ -15,8 +15,8 @@ var imgCrypter = (function () {
 
   function decimalToBinary(number){
     var result = number.toString(2);
+    var zeros = "";
     if (result.length < 8){
-      var zeros = "";
       for(var i = 0; i < 8 - result.length; i++) {
         zeros += "0";
       }
@@ -58,17 +58,17 @@ var imgCrypter = (function () {
       preview.imageData.data[offset + 1] = color.g;
       preview.imageData.data[offset + 2] = color.b;
     },
-    getDimensions: function(){
-      return {
-        width: preview.width,
-        height: preview.height
-      }
-    },
     applyChanges: function () {
       preview.context.putImageData(preview.imageData, 0, 0);
     },
     download: function (filename) {
       downloadImage(filename)
+    },
+    getDimensions: function(){
+      return {
+        width: preview.width,
+        height: preview.height
+      }
     },
     stringToBinary: function(str) {
       var result = "";
