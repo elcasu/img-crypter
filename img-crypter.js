@@ -13,6 +13,17 @@ var imgCrypter = (function () {
     return ((y * (width * 4)) + (x * 4))
   }
 
+  function decimalToBinary(number){
+    var result = number.toString(2);
+    if (result.length < 8){
+      var zeros = "";
+      for(var i = 0; i < 8 - result.length; i++) {
+        zeros += "0";
+      }
+    }
+    return zeros + result;
+  }
+
   return {
     setCanvas: function (canvasElement) {
       preview.canvas = canvasElement;
@@ -58,6 +69,13 @@ var imgCrypter = (function () {
     },
     download: function (filename) {
       downloadImage(filename)
+    },
+    stringToBinary: function(str) {
+      var result = "";
+      for(var i = 0; i < str.length; i++) {
+        result += decimalToBinary(str.charCodeAt(i));
+      }
+      return result;
     }
   };
 })();
